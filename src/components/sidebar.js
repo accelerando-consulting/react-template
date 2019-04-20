@@ -31,20 +31,21 @@ const styles = theme => ({
     display: 'flex',
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: drawerWidth,
       flexShrink: 0,
     },
   },
   appBar: {
     marginLeft: drawerWidth,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: `calc(100% - ${drawerWidth}px)`,
     },
+    height: 60
   },
   menuButton: {
     marginRight: 20,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'none',
     },
   },
@@ -62,7 +63,7 @@ class Sidebar extends Component<Props> {
   props: Props;
 
   render() {
-    console.log("sidebar render props=", this.props);
+    // console.log("sidebar component render props=", this.props);
     const {
       classes,
       mobileOpen,
@@ -99,7 +100,7 @@ class Sidebar extends Component<Props> {
     );
     
     return (
-      <div>
+      <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton
@@ -116,7 +117,7 @@ class Sidebar extends Component<Props> {
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} >
-        <Hidden smUp implementation="css">
+        <Hidden mdUp implementation="css">
           <Drawer
               variant="temporary"
               open={mobileOpen}
@@ -131,7 +132,7 @@ class Sidebar extends Component<Props> {
               {drawer}
             </Drawer>
       </Hidden>
-      <Hidden xsDown implementation="css">
+      <Hidden smDown implementation="css">
           <Drawer
             classes={{
               paper: classes.drawerPaper,

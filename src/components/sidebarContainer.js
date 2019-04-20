@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import Sidebar from './sidebar'
 import * as SidebarActions from './sidebarActions';
-import { type SidebarState } from './sidebarReducers';
+import { type SidebarState } from './sidebarReducer';
 	 
 function mapStateToProps(state) : SidebarState {
   // console.log('sidebarContainer mapStateToProps ', state);
