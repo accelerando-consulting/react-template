@@ -1,11 +1,14 @@
-import { combineReducers } from 'redux'
-import {
-  APP_START
-} from './actions'
+// @flow         		-*- mode: rjsx; js-indent-level: 2; -*-
 
-function homePageReducer(state = [], action) {
-  console.log('homePageReducer action=', action);
-  console.log('homePageReducer state=', state);
+import { combineReducers } from 'redux'
+import { connectRouter } from 'connected-react-router'
+import { APP_START } from './actions'
+
+import sidebar from './components/sidebarReducers'
+
+function app(state = [], action) {
+  console.log('appReducer action=', action);
+  console.log('appReducer state=', state);
   switch (action.type) {
     case APP_START:
       return state;
@@ -14,8 +17,10 @@ function homePageReducer(state = [], action) {
   }
 }
 
-const rootReducer = combineReducers({
-  homePageReducer
+export default (history) => combineReducers({
+    router: connectRouter(history),
+    app,
+    sidebar
 })
 
-export default rootReducer
+
