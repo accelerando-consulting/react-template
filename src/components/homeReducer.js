@@ -4,13 +4,13 @@ import { type HomeAction } from './homeActions';
 import * as actions from './homeActions';
 
 type HomeState = {
-  location: {}
+  coordinates: {}
 }
 
 const initialState: HomeState = {
-  location: {
-    lat: 51.505,
-    lng: -0.09,
+  coordinates: {
+    latitude: 51.505,
+    longitude: -0.09,
     zoom: 13,
   }
 }
@@ -32,10 +32,10 @@ export default function home(
       ...state,
       location: {...state.location, zoom: action.zoom}
     });
-  case actions.SET_LOCATION:
+  case actions.SET_COORDINATES:
     return ({
       ...state,
-      location: {...state.location, ...action.location}
+      coordinates: {...state.coordinates, ...action.coordinates}
     });
   default:
     console.error('Home reducer did not handle action ', action);

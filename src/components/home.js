@@ -3,9 +3,10 @@
 import React, { Component } from 'react';
 import { withStyles, withTheme } from '@material-ui/core/styles';
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import Geolocation from "react-geolocation";
 
 type Props = {
-  location: {}
+  coordinates: {}
 };
 
 const drawerWidth = 240;
@@ -13,7 +14,7 @@ const drawerWidth = 240;
 const styles = theme => ({
   mapDiv: {
     marginTop: 60,
-    height: '100vh',
+    height: 'calc(100vh - 60px)',
     [theme.breakpoints.up('md')]: {
       marginLeft: drawerWidth,
     }
@@ -29,15 +30,20 @@ class Home extends Component<Props> {
     const {
       classes,
       // theme,
-      location,
+      coordinates,
+      setCoordinates,
     } = this.props;
 
-    const position = [location.lat, location.lng];
+    const position = [coordinates.latitude, coordinates.longitude];
 
     return (
+      <div>
+        <Geolocation
+          onSuccess={p=>setCoordinates(p.coords)}
+        />
       <Map className={classes.mapDiv}
 	   center={position}
-	   zoom={location.zoom} >
+	   zoom={coordinates.zoom} >
 	<TileLayer
 	  attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 	  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -48,6 +54,7 @@ class Home extends Component<Props> {
 	  </Popup>
 	</Marker>
       </Map>
+      </div>
     );}
 }
 

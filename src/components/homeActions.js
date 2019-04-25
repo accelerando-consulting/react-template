@@ -3,11 +3,11 @@
 export type HomeAction = {
   +type: string,
   zoom?: number,
-  location?: {}
+  coordinates?: Coordinates
 };
 
 export const SET_ZOOM = 'SET_ZOOM';
-export const SET_LOCATION = 'SET_LOCATION';
+export const SET_COORDINATES = 'SET_COORDINATES';
 
 export function setZoom(z) {
   return ({
@@ -16,10 +16,18 @@ export function setZoom(z) {
   });
 }
 
-export function setLocation(l) {
+export function setCoordinates(c) {
+  function nix_nulls(c) {
+    const coordinate_properties = ['latitude','longitude','altitude','accuracy','altitudeAccuracy','heading','speed'];
+    let result = {}
+    coordinate_properties.filter(k=>c[k]!==null).forEach(k=>{
+      result[k]=c[k]
+    });
+    return result
+  }
+
   return ({
-    type: SET_LOCATION,
-    location: l
+    type: SET_COORDINATES,
+    coordinates: nix_nulls(c)
   });
 }
-
