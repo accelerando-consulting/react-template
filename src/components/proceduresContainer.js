@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { Document, Outline, Page } from 'react-pdf';
 import { drawerMainStyles } from './sidebar';
 
-import proceduresPDF from './procedures.pdf';
+//import proceduresPDF from './procedures.pdf';
 
 export type ProceduresAction = {
   +type: string,
@@ -50,10 +50,10 @@ class ProceduresComponent extends Component<ProceduresProps> {
     return (
       <div className={classes.root}>
         <h1>Procedure document</h1>
-        <Document file={proceduresPDF}>
+        {/*<Document file={proceduresPDF}>
           <Outline onItemClick={this.onItemClick} />
           <Page pageNumber={1} />
-        </Document>
+        </Document>*/}
       </div>
     );}
 };
