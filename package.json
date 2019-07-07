@@ -1,5 +1,5 @@
 {
-  "name": "navisafe",
+  "name": "droneworks",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,12 +15,14 @@
     "react-geolocation": "^1.0.4",
     "react-hot-loader": "^4.8.4",
     "react-leaflet": "^2.2.1",
+    "react-pdf": "^4.0.5",
     "react-redux": "^7.0.2",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
     "redux-loop": "^4.5.4",
-    "redux-starter-kit": "^0.4.3"
+    "redux-starter-kit": "^0.4.3",
+    "serverless-jest-plugin": "^0.2.1"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -39,6 +41,9 @@
   ],
   "devDependencies": {
     "flow-bin": "^0.97.0",
-    "redux-devtools": "^3.5.0"
+    "fullstack-serverless": "^0.6.0",
+    "redux-devtools": "^3.5.0",
+    "serverless": "^1.41.1",
+    "serverless-s3-remover": "^0.6.0"
   }
 }

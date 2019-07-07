@@ -1,4 +1,9 @@
 
+div.page {
+    margin-top: 60px; 
+    height: 'calc(100vh - 60px)';
+}
+
 .mapDiv {
     height: 400px;
 }

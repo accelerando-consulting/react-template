@@ -1,25 +1,17 @@
 // @flow			-*- mode: rjsx; js-indent-level: 2; -*-
 
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { withStyles, withTheme } from '@material-ui/core/styles';
-import { Map, TileLayer, Marker, Popup } from "react-leaflet";
-import Geolocation from "react-geolocation";
+//import { Document, Outline, Page } from 'react-pdf';
+import { drawerMainStyles } from './sidebar';
+import Pagebar from './pagebar';
 
 type Props = {
-  coordinates: {}
 };
 
-const drawerWidth = 240;
-
-const styles = theme => ({
-  mapDiv: {
-    marginTop: 60,
-    height: 'calc(100vh - 60px)',
-    [theme.breakpoints.up('md')]: {
-      marginLeft: drawerWidth,
-    }
-  }
-});
+const styles = theme => Object.assign({
+}, drawerMainStyles(theme));
 
 class Home extends Component<Props> {
   
@@ -30,30 +22,11 @@ class Home extends Component<Props> {
     const {
       classes,
       // theme,
-      coordinates,
-      setCoordinates,
     } = this.props;
 
-    const position = [coordinates.latitude, coordinates.longitude];
-
     return (
-      <div>
-        <Geolocation
-          onSuccess={p=>setCoordinates(p.coords)}
-        />
-      <Map className={classes.mapDiv}
-	   center={position}
-	   zoom={coordinates.zoom} >
-	<TileLayer
-	  attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-	  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-	/>
-	<Marker position={position}>
-	  <Popup>
-	    A pretty CSS3 popup. <br /> Easily customizable.
-	  </Popup>
-	</Marker>
-      </Map>
+      <div className={classes.root}>
+        <Pagebar title="Home"/>
       </div>
     );}
 }

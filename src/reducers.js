@@ -6,6 +6,8 @@ import { APP_START } from './actions'
 
 import sidebarReducer from './components/sidebarReducer'
 import homeReducer from './components/homeReducer'
+import sitesReducer from './components/sitesReducer'
+import { proceduresReducer } from './components/proceduresContainer'
 
 function appReducer(state = [], action) {
   // console.log('appReducer action=', action);
@@ -19,10 +21,12 @@ function appReducer(state = [], action) {
 }
 
 export default (history) => combineReducers({
-    router: connectRouter(history),
-    app: appReducer,
-    sidebar: sidebarReducer,
-    home: homeReducer
+  router: connectRouter(history),
+  app: appReducer,
+  sidebar: sidebarReducer,
+  home: homeReducer,
+  sites: sitesReducer,
+  procedures: proceduresReducer,
 })
 
 
